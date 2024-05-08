@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users List</title>
+</head>
+<body>
+    <h1>Users List</h1>
+    <ul id="usersList"></ul>
+
+    <script>
+        const usersList = document.getElementById("usersList");
+        const usersData = JSON.parse(localStorage.getItem("usersData")) || [];
+
+        // Check if there is any user data available
+        if (usersData.length === 0) {
+            const noDataMessage = document.createElement("li");
+            noDataMessage.textContent = "No users registered yet.";
+            usersList.appendChild(noDataMessage);
+        } else {
+            // Iterate over each user data and create list items
+            usersData.forEach((userData) => {
+                const listItem = document.createElement("li");
+                listItem.textContent = `Name: ${userData.name}, Email: ${userData.email}`;
+                usersList.appendChild(listItem);
+            });
+        }
+    </script>
+</body>
+</html>
+
+
+<!--Ajax, which stands for Asynchronous JavaScript and XML, is a technique used in
+ web development to send and receive data from a web server asynchronously without 
+ needing to reload the entire page. This allows for dynamic and interactive web 
+ applications where certain parts of the page can be updated without the need
+  for a full page refresh.
+
+With Ajax, you can make requests to a server from client-side JavaScript code
+ and handle the response without interrupting the user's interaction with the 
+ web page. This is commonly used for tasks such as fetching data from a server, 
+ submitting form data, or performing actions like deleting or updating records
+  in a database.
+
+Pushing values into an array in Ajax typically refers to adding data received 
+from the server into an array in the client-side JavaScript code. When an Ajax 
+request is made and the server responds with data, you can handle that data in
+ the success callback function of the Ajax request. Within this callback
+  function, you can manipulate the received data, such as pushing it into an
+   array for further processing or displaying it on the web page.-->
